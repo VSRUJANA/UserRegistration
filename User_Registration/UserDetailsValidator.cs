@@ -15,7 +15,7 @@ namespace User_Registration
 
         public static string REGEX_FIRST_NAME = "^[A-Z]{1}[a-z]{2,}$";
         public static string REGEX_LAST_NAME = "^[A-Z]{1}[a-z]{2,}$";
-        public static string REGEX_EMAIL = "^[a-z]{2,}[.]?[a-z]{0,}@[a-z]{2,}.[a-z]{2,}[.]?[a-z]{0,}?";
+        public static string REGEX_EMAIL = "^[a-z0-9A-Z]+([._+-][a-z0-9A-Z]+)*[@][a-z0-9A-Z]+[.][a-zA-Z]{2,3}(.[a-zA-Z]{0,3})?$";
         public static string REGEX_MOB_NO = @"^[1-9]{1}[0-9]{1}\s[1-9]{1}[0-9]{9}$";
         public static string REGEX_PASSWORD = "(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).{8,}";
 
