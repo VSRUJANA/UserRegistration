@@ -11,6 +11,7 @@ namespace User_Registration
             v.ValidateLastName();
             v.ValidateEmail();
             v.ValidateMobNo();
+            v.ValidatePassword();
             v.Display();
         }
     }

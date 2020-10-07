@@ -11,11 +11,13 @@ namespace User_Registration
         public static string lName;
         public static string email;
         public static string mobNo;
+        public static string password;
+
         public static string REGEX_FIRST_NAME = "^[A-Z]{1}[a-z]{2,}$";
         public static string REGEX_LAST_NAME = "^[A-Z]{1}[a-z]{2,}$";
-        /*Eg. abc.xyz@bl.co.in -Email has 3 mandatory parts (abc, bl & co) and 2 optional(xyz & in) with precise @ and.positions*/
         public static string REGEX_EMAIL = "^[a-z]{2,}[.]?[a-z]{0,}@[a-z]{2,}.[a-z]{2,}[.]?[a-z]{0,}?";
         public static string REGEX_MOB_NO = @"^[1-9]{1}[0-9]{1}\s[1-9]{1}[0-9]{9}$";
+        public static string REGEX_PASSWORD = ".{8,}";
 
         public void ValidateFirstName()
         {
@@ -61,7 +63,17 @@ namespace User_Registration
                 ValidateMobNo();
             }
         }
-
+        public void ValidatePassword()
+        {
+            Console.WriteLine("Enter Password");
+            password = Console.ReadLine();
+            bool validity = Regex.IsMatch(password, REGEX_PASSWORD);
+            if (!validity)
+            {
+                Console.WriteLine("Invalid Password !");
+                ValidatePassword();
+            }
+        }
         public void Display()
         {
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
@@ -70,6 +82,7 @@ namespace User_Registration
             Console.WriteLine("LastName   : " + lName);
             Console.WriteLine("Email id   : " + email);
             Console.WriteLine("Mobile no. : " + mobNo);
+            Console.WriteLine("Password   : " + password);
 
         }
 
