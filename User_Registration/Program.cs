@@ -5,7 +5,11 @@ namespace User_Registration
     {
         static void Main(string[] args)
         {
+            UserDetailsValidator v = new UserDetailsValidator();
             Console.WriteLine("User Registration System");
+            v.ValidateFirstName();
+            v.Display();
         }
     }
 }
+
