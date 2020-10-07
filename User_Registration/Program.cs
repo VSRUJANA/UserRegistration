@@ -10,6 +10,7 @@ namespace User_Registration
             v.ValidateFirstName();
             v.ValidateLastName();
             v.ValidateEmail();
+            v.ValidateMobNo();
             v.Display();
         }
     }
