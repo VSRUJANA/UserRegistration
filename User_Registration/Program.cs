@@ -8,6 +8,7 @@ namespace User_Registration
             UserDetailsValidator v = new UserDetailsValidator();
             Console.WriteLine("User Registration System");
             v.ValidateFirstName();
+            v.ValidateLastName();
             v.Display();
         }
     }
