@@ -9,6 +9,7 @@ namespace User_Registration
             Console.WriteLine("User Registration System");
             v.ValidateFirstName();
             v.ValidateLastName();
+            v.ValidateEmail();
             v.Display();
         }
     }
