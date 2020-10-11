@@ -21,62 +21,30 @@ namespace User_Registration
         public bool ValidateFirstName(string fName)
         {
             bool validity = Regex.IsMatch(fName, REGEX_NAME);
-            if (!validity)
-            {
-                Console.WriteLine("Invalid input! First name must start with uppercase letter and contain minimum 3 characters");
-                Console.WriteLine("Enter valid first name");
-                fName = Console.ReadLine();
-                ValidateFirstName(fName);
-            }
             firstName = fName;
             return validity;
         }
         public bool ValidateLastName(string lName)
         {
             bool validity = Regex.IsMatch(lName, REGEX_NAME);
-            if (!validity)
-            {
-                Console.WriteLine("Invalid input! Last name must start with uppercase letter and contain minimum 3 characters");
-                Console.WriteLine("Enter valid Last name");
-                lName = Console.ReadLine();
-                ValidateLastName(lName);
-            }
             lastName = lName;
             return validity;
         }
         public bool ValidateEmail(string email)
         {
             bool validity = Regex.IsMatch(email, REGEX_EMAIL);
-            if (!validity)
-            {
-                Console.WriteLine("Invalid input! Enter valid email id");
-                email = Console.ReadLine();
-                ValidateEmail(email);
-            }
             eMail = email;
             return validity;
         }
         public bool ValidateMobNo(string mobNo)
         {
             bool validity = Regex.IsMatch(mobNo, REGEX_MOB_NO);
-            if (!validity)
-            {
-                Console.WriteLine("Invalid input! Enter valid Mobile number");
-                mobNo = Console.ReadLine();
-                ValidateMobNo(mobNo);
-            }
             mobileNo = mobNo;
             return validity;
         }
         public bool ValidatePassword(string password)
         {
             bool validity = Regex.IsMatch(password, REGEX_PASSWORD);
-            if (!validity)
-            {
-                Console.WriteLine("Invalid input! Enter valid Password");
-                password = Console.ReadLine();
-                ValidatePassword(password);
-            }
             passWord = password;
             return validity;
         }
