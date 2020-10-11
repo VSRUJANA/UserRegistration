@@ -18,7 +18,7 @@ namespace User_Registration
         public static string REGEX_MOB_NO = @"^[1-9]{1}[0-9]{1}\s[1-9]{1}[0-9]{9}$";
         public static string REGEX_PASSWORD = "(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).{8,}";
 
-        public void ValidateFirstName(string fName)
+        public bool ValidateFirstName(string fName)
         {
             bool validity = Regex.IsMatch(fName, REGEX_NAME);
             if (!validity)
@@ -29,8 +29,9 @@ namespace User_Registration
                 ValidateFirstName(fName);
             }
             firstName = fName;
+            return validity;
         }
-        public void ValidateLastName(string lName)
+        public bool ValidateLastName(string lName)
         {
             bool validity = Regex.IsMatch(lName, REGEX_NAME);
             if (!validity)
@@ -41,8 +42,9 @@ namespace User_Registration
                 ValidateLastName(lName);
             }
             lastName = lName;
+            return validity;
         }
-        public void ValidateEmail(string email)
+        public bool ValidateEmail(string email)
         {
             bool validity = Regex.IsMatch(email, REGEX_EMAIL);
             if (!validity)
@@ -52,10 +54,10 @@ namespace User_Registration
                 ValidateEmail(email);
             }
             eMail = email;
+            return validity;
         }
-        public void ValidateMobNo(string mobNo)
+        public bool ValidateMobNo(string mobNo)
         {
-
             bool validity = Regex.IsMatch(mobNo, REGEX_MOB_NO);
             if (!validity)
             {
@@ -64,10 +66,10 @@ namespace User_Registration
                 ValidateMobNo(mobNo);
             }
             mobileNo = mobNo;
+            return validity;
         }
-        public void ValidatePassword(string password)
+        public bool ValidatePassword(string password)
         {
-
             bool validity = Regex.IsMatch(password, REGEX_PASSWORD);
             if (!validity)
             {
@@ -76,6 +78,7 @@ namespace User_Registration
                 ValidatePassword(password);
             }
             passWord = password;
+            return validity;
         }
         public void Display()
         {
