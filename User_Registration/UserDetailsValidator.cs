@@ -50,7 +50,7 @@ namespace User_Registration
         }
         public void Display()
         {
-            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("USER REGISTRATION DETAILS");
             Console.WriteLine("FirstName  : " + firstName);
             Console.WriteLine("LastName   : " + lastName);
