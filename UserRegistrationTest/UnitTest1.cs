@@ -21,13 +21,15 @@ namespace UserRegistrationTest
         [TestMethod]
         public void ValidateFirstName_with_invalid_input()
         {
-            //Arrange
-            UserDetailsValidator validator = new UserDetailsValidator();
-            bool expected = false;
-            //Act
-            bool result = validator.ValidateFirstName("srujana");
-            //Assert
-            Assert.AreEqual(expected, result);
+            try
+            {
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool result = validator.ValidateFirstName("srujana");
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Invalid First Name", e.Message);
+            }
         }
 
         [TestMethod]
@@ -45,13 +47,15 @@ namespace UserRegistrationTest
         [TestMethod]
         public void ValidateLastName_with_invalid_input()
         {
-            //Arrange
-            UserDetailsValidator validator = new UserDetailsValidator();
-            bool expected = false;
-            //Act
-            bool result = validator.ValidateLastName("V");
-            //Assert
-            Assert.AreEqual(expected, result);
+            try
+            {
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool result = validator.ValidateLastName("V");
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Invalid Last Name", e.Message);
+            }
         }
 
         [TestMethod]
@@ -69,13 +73,17 @@ namespace UserRegistrationTest
         [TestMethod]
         public void ValidateEmail_with_invalid_input()
         {
-            //Arrange
-            UserDetailsValidator validator = new UserDetailsValidator();
-            bool expected = false;
-            //Act
-            bool result = validator.ValidateEmail("abc-100@gmail.com.in.au");
-            //Assert
-            Assert.AreEqual(expected, result);
+            try
+            {
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool result = validator.ValidateEmail("abc-100@gmail.com.in.au");
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Invalid Email", e.Message);
+            }
+
+
         }
 
         [TestMethod]
@@ -93,13 +101,15 @@ namespace UserRegistrationTest
         [TestMethod]
         public void ValidateMobNo_with_invalid_input()
         {
-            //Arrange
-            UserDetailsValidator validator = new UserDetailsValidator();
-            bool expected = false;
-            //Act
-            bool result = validator.ValidateMobNo("221078");
-            //Assert
-            Assert.AreEqual(expected, result);
+            try
+            {
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool result = validator.ValidateMobNo("221078");
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Invalid Mobile Number", e.Message);
+            }
         }
 
         [TestMethod]
@@ -117,13 +127,15 @@ namespace UserRegistrationTest
         [TestMethod]
         public void ValidatePassword_with_invalid_input()
         {
-            //Arrange
-            UserDetailsValidator validator = new UserDetailsValidator();
-            bool expected = false;
-            //Act
-            bool result = validator.ValidatePassword("abcd1234");
-            //Assert
-            Assert.AreEqual(expected, result);
+            try
+            {
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool result = validator.ValidatePassword("abcd1234");
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Invalid Password", e.Message);
+            }
         }
 
         [TestMethod]
@@ -163,154 +175,14 @@ namespace UserRegistrationTest
         [DataRow("abc@gmail.com.aa.au")]
         public void Validate_Multiple_Email_Enteries_for_invalid_input(string email)
         {
-            //Arrange
-            UserDetailsValidator validator = new UserDetailsValidator();
-            bool expected = false;
-            //Act
-            bool result = validator.ValidateEmail(email);
-            //Assert
-            Assert.AreEqual(expected, result);
-        }
-
-        //Custom Exception Handling
-        [TestMethod]
-        public void Given_Empty_FirstName_Should_Throw_Exception_Indicating_EmptyInput()
-        {
             try
             {
-                string fName = string.Empty;
                 UserDetailsValidator validator = new UserDetailsValidator();
-                bool actual = validator.ValidateFirstName(fName);
+                bool result = validator.ValidateEmail(email);
             }
             catch (UserRegistrationCustomException e)
             {
-                Assert.AreEqual("First Name should not be empty", e.Message);
-            }
-        }
-        [TestMethod]
-        public void Given_NULL_FirstName_Should_Throw_Exception_Indicating_NullInput()
-        {
-            try
-            {
-                string fName = null;
-                UserDetailsValidator validator = new UserDetailsValidator();
-                bool actual = validator.ValidateFirstName(fName);
-            }
-            catch (UserRegistrationCustomException e)
-            {
-                Assert.AreEqual("First Name should not be null", e.Message);
-            }
-        }
-        [TestMethod]
-        public void Given_Empty_LastName_Should_Throw_Exception_Indicating_EmptyInput()
-        {
-            try
-            {
-                string lName = string.Empty;
-                UserDetailsValidator validator = new UserDetailsValidator();
-                bool actual = validator.ValidateLastName(lName);
-            }
-            catch (UserRegistrationCustomException e)
-            {
-                Assert.AreEqual("Last Name should not be empty", e.Message);
-            }
-        }
-        [TestMethod]
-        public void Given_NULL_LastName_Should_Throw_Exception_Indicating_NullInput()
-        {
-            try
-            {
-                string lName = null;
-                UserDetailsValidator validator = new UserDetailsValidator();
-                bool actual = validator.ValidateLastName(lName);
-            }
-            catch (UserRegistrationCustomException e)
-            {
-                Assert.AreEqual("Last Name should not be null", e.Message);
-            }
-        }
-        [TestMethod]
-        public void Given_Empty_Email_Should_Throw_Exception_Indicating_EmptyInput()
-        {
-            try
-            {
-                string email = string.Empty;
-                UserDetailsValidator validator = new UserDetailsValidator();
-                bool actual = validator.ValidateEmail(email);
-            }
-            catch (UserRegistrationCustomException e)
-            {
-                Assert.AreEqual("Email should not be empty", e.Message);
-            }
-        }
-        [TestMethod]
-        public void Given_NULL_Email_Should_Throw_Exception_Indicating_NullInput()
-        {
-            try
-            {
-                string email = null;
-                UserDetailsValidator validator = new UserDetailsValidator();
-                bool actual = validator.ValidateEmail(email);
-            }
-            catch (UserRegistrationCustomException e)
-            {
-                Assert.AreEqual("Email should not be null", e.Message);
-            }
-        }
-        [TestMethod]
-        public void Given_Empty_MobileNumber_Should_Throw_Exception_Indicating_EmptyInput()
-        {
-            try
-            {
-                string number = string.Empty;
-                UserDetailsValidator validator = new UserDetailsValidator();
-                bool actual = validator.ValidateMobNo(number);
-            }
-            catch (UserRegistrationCustomException e)
-            {
-                Assert.AreEqual("Mobile number should not be empty", e.Message);
-            }
-        }
-        [TestMethod]
-        public void Given_NULL_MobileNumber_Should_Throw_Exception_Indicating_NullInput()
-        {
-            try
-            {
-                string number = null;
-                UserDetailsValidator validator = new UserDetailsValidator(); ;
-                bool actual = validator.ValidateMobNo(number);
-            }
-            catch (UserRegistrationCustomException e)
-            {
-                Assert.AreEqual("Mobile number should not be null", e.Message);
-            }
-        }
-        [TestMethod]
-        public void Given_Empty_Password_Should_Throw_Exception_Indicating_EmptyInput()
-        {
-            try
-            {
-                string password = string.Empty;
-                UserDetailsValidator validator = new UserDetailsValidator();
-                bool actual = validator.ValidatePassword(password);
-            }
-            catch (UserRegistrationCustomException e)
-            {
-                Assert.AreEqual("Password should not be empty", e.Message);
-            }
-        }
-        [TestMethod]
-        public void Given_NULL_Password_Should_Throw_Exception_Indicating_NullInput()
-        {
-            try
-            {
-                string password = null;
-                UserDetailsValidator validator = new UserDetailsValidator();
-                bool actual = validator.ValidatePassword(password);
-            }
-            catch (UserRegistrationCustomException e)
-            {
-                Assert.AreEqual("Password should not be null", e.Message);
+                Assert.AreEqual("Invalid Email", e.Message);
             }
         }
     }

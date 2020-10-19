@@ -18,86 +18,12 @@ namespace User_Registration
         public static string REGEX_MOB_NO = @"^[1-9]{1}[0-9]{1}\s[1-9]{1}[0-9]{9}$";
         public static string REGEX_PASSWORD = "(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).{8,}";
 
-        public bool ValidateFirstName(string fName)
-        {
-            try
-            {
-                if (fName.Equals(string.Empty))
-                {
-                    throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_INPUT, "First Name should not be empty");
-                }
-                firstName = fName;
-                return Regex.IsMatch(fName, REGEX_NAME);
-            }
-            catch (NullReferenceException)
-            {
-                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.NULL_INPUT, "First Name should not be null");
-            }
-        }
-        public bool ValidateLastName(string lName)
-        {
-            try
-            {
-                if (lName.Equals(string.Empty))
-                {
-                    throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_INPUT, "Last Name should not be empty");
-                }
-                lastName = lName;
-                return Regex.IsMatch(lName, REGEX_NAME);
-            }
-            catch (NullReferenceException)
-            {
-                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.NULL_INPUT, "Last Name should not be null");
-            }
-        }
-        public bool ValidateEmail(string email)
-        {
-            try
-            {
-                if (email.Equals(string.Empty))
-                {
-                    throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_INPUT, "Email should not be empty");
-                }
-                eMail = email;
-                return Regex.IsMatch(email, REGEX_EMAIL);
-            }
-            catch (NullReferenceException)
-            {
-                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.NULL_INPUT, "Email should not be null");
-            }
-        }
-        public bool ValidateMobNo(string mobNo)
-        {
-            try
-            {
-                if (mobNo.Equals(string.Empty))
-                {
-                    throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_INPUT, "Mobile number should not be empty");
-                }
-                mobileNo = mobNo;
-                return Regex.IsMatch(mobNo, REGEX_MOB_NO);
-            }
-            catch (NullReferenceException)
-            {
-                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.NULL_INPUT, "Mobile number should not be null");
-            }
-        }
-        public bool ValidatePassword(string password)
-        {
-            try
-            {
-                if (password.Equals(string.Empty))
-                {
-                    throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_INPUT, "Password should not be empty");
-                }
-                passWord = password;
-                return Regex.IsMatch(password, REGEX_PASSWORD);
-            }
-            catch (NullReferenceException)
-            {
-                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.NULL_INPUT, "Password should not be null");
-            }
-        }
+        public bool ValidateFirstName(string fName) => Regex.IsMatch(fName, REGEX_NAME) ? true : throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.Invalid_Name, "Invalid First Name");
+        public bool ValidateLastName(string lName) => Regex.IsMatch(lName, REGEX_NAME) ? true : throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.Invalid_Name, "Invalid Last Name");
+        public bool ValidateEmail(string email) => Regex.IsMatch(email, REGEX_EMAIL) ? true : throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.Invalid_Email, "Invalid Email");
+        public bool ValidatePassword(string password) => Regex.IsMatch(password, REGEX_PASSWORD) ? true : throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.Invalid_Password, "Invalid Password");
+        public bool ValidateMobNo(string mobileNo) => Regex.IsMatch(mobileNo, REGEX_MOB_NO) ? true : throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.Invalid_Mobile, "Invalid Mobile Number");
+
         public void Display()
         {
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
@@ -108,5 +34,6 @@ namespace User_Registration
             Console.WriteLine("Mobile no. : " + mobileNo);
             Console.WriteLine("Password   : " + passWord);
         }
+
     }
 }
