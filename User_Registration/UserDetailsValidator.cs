@@ -20,33 +20,83 @@ namespace User_Registration
 
         public bool ValidateFirstName(string fName)
         {
-            bool validity = Regex.IsMatch(fName, REGEX_NAME);
-            firstName = fName;
-            return validity;
+            try
+            {
+                if (fName.Equals(string.Empty))
+                {
+                    throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_INPUT, "First Name should not be empty");
+                }
+                firstName = fName;
+                return Regex.IsMatch(fName, REGEX_NAME);
+            }
+            catch (NullReferenceException)
+            {
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.NULL_INPUT, "First Name should not be null");
+            }
         }
         public bool ValidateLastName(string lName)
         {
-            bool validity = Regex.IsMatch(lName, REGEX_NAME);
-            lastName = lName;
-            return validity;
+            try
+            {
+                if (lName.Equals(string.Empty))
+                {
+                    throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_INPUT, "Last Name should not be empty");
+                }
+                lastName = lName;
+                return Regex.IsMatch(lName, REGEX_NAME);
+            }
+            catch (NullReferenceException)
+            {
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.NULL_INPUT, "Last Name should not be null");
+            }
         }
         public bool ValidateEmail(string email)
         {
-            bool validity = Regex.IsMatch(email, REGEX_EMAIL);
-            eMail = email;
-            return validity;
+            try
+            {
+                if (email.Equals(string.Empty))
+                {
+                    throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_INPUT, "Email should not be empty");
+                }
+                eMail = email;
+                return Regex.IsMatch(email, REGEX_EMAIL);
+            }
+            catch (NullReferenceException)
+            {
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.NULL_INPUT, "Email should not be null");
+            }
         }
         public bool ValidateMobNo(string mobNo)
         {
-            bool validity = Regex.IsMatch(mobNo, REGEX_MOB_NO);
-            mobileNo = mobNo;
-            return validity;
+            try
+            {
+                if (mobNo.Equals(string.Empty))
+                {
+                    throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_INPUT, "Mobile number should not be empty");
+                }
+                mobileNo = mobNo;
+                return Regex.IsMatch(mobNo, REGEX_MOB_NO);
+            }
+            catch (NullReferenceException)
+            {
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.NULL_INPUT, "Mobile number should not be null");
+            }
         }
         public bool ValidatePassword(string password)
         {
-            bool validity = Regex.IsMatch(password, REGEX_PASSWORD);
-            passWord = password;
-            return validity;
+            try
+            {
+                if (password.Equals(string.Empty))
+                {
+                    throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_INPUT, "Password should not be empty");
+                }
+                passWord = password;
+                return Regex.IsMatch(password, REGEX_PASSWORD);
+            }
+            catch (NullReferenceException)
+            {
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.NULL_INPUT, "Password should not be null");
+            }
         }
         public void Display()
         {

@@ -172,5 +172,146 @@ namespace UserRegistrationTest
             Assert.AreEqual(expected, result);
         }
 
+        //Custom Exception Handling
+        [TestMethod]
+        public void Given_Empty_FirstName_Should_Throw_Exception_Indicating_EmptyInput()
+        {
+            try
+            {
+                string fName = string.Empty;
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool actual = validator.ValidateFirstName(fName);
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("First Name should not be empty", e.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_NULL_FirstName_Should_Throw_Exception_Indicating_NullInput()
+        {
+            try
+            {
+                string fName = null;
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool actual = validator.ValidateFirstName(fName);
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("First Name should not be null", e.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_Empty_LastName_Should_Throw_Exception_Indicating_EmptyInput()
+        {
+            try
+            {
+                string lName = string.Empty;
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool actual = validator.ValidateLastName(lName);
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Last Name should not be empty", e.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_NULL_LastName_Should_Throw_Exception_Indicating_NullInput()
+        {
+            try
+            {
+                string lName = null;
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool actual = validator.ValidateLastName(lName);
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Last Name should not be null", e.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_Empty_Email_Should_Throw_Exception_Indicating_EmptyInput()
+        {
+            try
+            {
+                string email = string.Empty;
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool actual = validator.ValidateEmail(email);
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Email should not be empty", e.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_NULL_Email_Should_Throw_Exception_Indicating_NullInput()
+        {
+            try
+            {
+                string email = null;
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool actual = validator.ValidateEmail(email);
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Email should not be null", e.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_Empty_MobileNumber_Should_Throw_Exception_Indicating_EmptyInput()
+        {
+            try
+            {
+                string number = string.Empty;
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool actual = validator.ValidateMobNo(number);
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Mobile number should not be empty", e.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_NULL_MobileNumber_Should_Throw_Exception_Indicating_NullInput()
+        {
+            try
+            {
+                string number = null;
+                UserDetailsValidator validator = new UserDetailsValidator(); ;
+                bool actual = validator.ValidateMobNo(number);
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Mobile number should not be null", e.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_Empty_Password_Should_Throw_Exception_Indicating_EmptyInput()
+        {
+            try
+            {
+                string password = string.Empty;
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool actual = validator.ValidatePassword(password);
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Password should not be empty", e.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_NULL_Password_Should_Throw_Exception_Indicating_NullInput()
+        {
+            try
+            {
+                string password = null;
+                UserDetailsValidator validator = new UserDetailsValidator();
+                bool actual = validator.ValidatePassword(password);
+            }
+            catch (UserRegistrationCustomException e)
+            {
+                Assert.AreEqual("Password should not be null", e.Message);
+            }
+        }
     }
 }
